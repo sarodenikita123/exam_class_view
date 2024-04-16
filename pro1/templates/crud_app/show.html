@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>show page</title>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+        <h3 class="text-center text-primary">Exam Details</h3>
+            <table class="table table-success table-striped">
+                <thead>
+                <tr>
+                    <th> Candidate Name </th>
+                    <th> Mother Name </th>
+                    <th> Father Name</th>
+                    <th> Exam Name </th>
+                    <th> Center </th>
+                    <th> Date of exam </th>
+                    <th> Time </th>
+                    <th colspan="2" class="text-center"> Action </th>
+                </tr>
+
+                </thead>
+                <tbody>
+                {% for c in obj %}
+                <tr>
+                    <td>{{c.candidate_name}}</td>
+                    <td>{{c.mother_name}}</td>
+                    <td>{{c.father_name}}</td>
+                    <td>{{c.exam_name }}</td>
+                    <td>{{c.center}}</td>
+                    <td>{{c.date_of_exam}}</td>
+                    <td>{{c.time}}</td>
+                    <td>
+                        <a href="{% url 'update_url' c.id %}">
+                            <button class="btn btn-warning col-12"><i class="bi bi-pencil-square"></i>&nbsp Upadte</button>
+                        </a>
+                    </td>
+                     <td>
+                        <a href="{% url 'cancel_url' c.id %}">
+                            <button  class="btn btn-danger col-12"><i class="bi bi-trash3-fill"></i>&nbsp Delete</button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+</body>
+</html>
